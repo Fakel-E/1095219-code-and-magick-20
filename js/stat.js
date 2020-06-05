@@ -57,6 +57,7 @@ window.renderStatistics = function (ctx, players, times) {
 
   // рисуем колонки результатов
   for (var i = 0; i < players.length; i++) {
+    // players[i] === 'Вы' ? ctx.fillStyle = 'rgba(255, 0, 0, 1)' : ctx.fillStyle = 'hsl(240, ' + getRandomInRange(10, 100) + '%, 50%)'
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
