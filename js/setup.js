@@ -49,7 +49,7 @@ var wizards = [
 ];
 
 // функция отрисовки магов
-var renderWizzard = function (wizard) {
+var renderWizzard = function () {
   var wizardElement = similarWizardTemplate.cloneNode(true);
 
   wizardElement.querySelector('.setup-similar-label').textContent = WIZARD_NAMES[i] + ' ' + WIZARD_SURNAME[i];
