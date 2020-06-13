@@ -9,6 +9,10 @@ var NUMBER_WIZARDS = 4;
 var getRandomInRange = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+// функция вызова рандомного элемента
+var getRandomElement = function (array) {
+  return array[[getRandomInRange(0, array.length - 1)]];
+};
 
 // Открываем окно настройки персонажа
 var userDialog = document.querySelector('.setup');
@@ -26,20 +30,20 @@ var wizards = [];
 
 for (var i = 0; i < NUMBER_WIZARDS; i++) {
   wizards.push({
-    name: WIZARD_NAMES[getRandomInRange(0, WIZARD_NAMES.length - 1)],
-    surname: WIZARD_SURNAME[getRandomInRange(0, WIZARD_SURNAME.length - 1)],
-    coatColor: COAT_COLOR[getRandomInRange(0, COAT_COLOR.length)],
-    eyesColor: EYES_COLOR[getRandomInRange(0, EYES_COLOR.length)]
+    name: getRandomElement(WIZARD_NAMES),
+    surname: getRandomElement(WIZARD_SURNAME),
+    coatColor: getRandomElement(COAT_COLOR),
+    eyesColor: getRandomElement(EYES_COLOR)
   });
 }
 
 // функция отрисовки магов
-var renderWizzard = function () {
+var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
 
-  wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name + ' ' + wizards[i].surname;
-  wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
-  wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor;
+  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name + ' ' + wizard.surname;
+  wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 
   return wizardElement;
 };
@@ -47,7 +51,7 @@ var renderWizzard = function () {
 // создаем фрагмент дома, который будет добавлять
 var fragment = document.createDocumentFragment();
 for (var j = 0; j < wizards.length; j++) {
-  fragment.appendChild(renderWizzard(wizards[i]));
+  fragment.appendChild(renderWizard(wizards[j]));
 }
 similarListElement.appendChild(fragment);
 
