@@ -135,25 +135,24 @@ var wizardCoatId = document.querySelector('#coat-color');
 var wizardEyesId = document.querySelector('#eyes-color');
 var wizardFireballId = document.querySelector('#fireball-color');
 
-// Функция изменения цвета
-var changeColor = function (wizardElement, massive) {
-  wizardElement.style.fill = getRandomElement(massive);
-};
+
 // Добавляем обработчики
 wizardCoat.addEventListener('click', function () {
-  changeColor(wizardCoat, COAT_COLOR);
+  wizardCoat.style.fill = getRandomElement(COAT_COLOR);
   wizardCoatId.value = wizardCoat.style.fill;
-  wizardCoat.removeEventListener('click');
+  wizardCoat.removeEventListener('click', onPopupEscPress);
 });
 
 wizardEyes.addEventListener('click', function () {
-  changeColor(wizardEyes, EYES_COLOR);
-  wizardEyesId.value = wizardCoat.style.fill;
-  wizardEyes.removeEventListener('click');
+  var colorEyes = getRandomElement(EYES_COLOR);
+  wizardEyes.style.fill = colorEyes;
+  wizardEyesId.value = colorEyes;
+  wizardEyes.removeEventListener('click', onPopupEscPress);
 });
 
 wizardFireball.addEventListener('click', function () {
-  changeColor(wizardFireball, FIRE_COLOR);
-  wizardFireballId.value = wizardFireball.style.backgroundColor;
-  wizardFireball.removeEventListener('click');
+  var colorFireball = getRandomElement(FIRE_COLOR);
+  wizardFireball.style.backgroundColor = colorFireball;
+  wizardFireballId.value = colorFireball;
+  wizardFireball.removeEventListener('click', onPopupEscPress);
 });
