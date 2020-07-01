@@ -40,10 +40,6 @@ var getRandomElement = function (array) {
   return array[[getRandomInRange(0, array.length - 1)]];
 };
 
-// Открываем окно настройки персонажа
-var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
-
 // создаем переменную с элементом, куда будем вставлять магов
 var similarListElement = document.querySelector('.setup-similar-list');
 // создаем переменную с шаблоном мага, который будем копировать
@@ -140,19 +136,16 @@ var wizardFireballId = document.querySelector('#fireball-color');
 wizardCoat.addEventListener('click', function () {
   wizardCoat.style.fill = getRandomElement(COAT_COLOR);
   wizardCoatId.value = wizardCoat.style.fill;
-  wizardCoat.removeEventListener('click', onPopupEscPress);
 });
 
 wizardEyes.addEventListener('click', function () {
   var colorEyes = getRandomElement(EYES_COLOR);
   wizardEyes.style.fill = colorEyes;
   wizardEyesId.value = colorEyes;
-  wizardEyes.removeEventListener('click', onPopupEscPress);
 });
 
 wizardFireball.addEventListener('click', function () {
   var colorFireball = getRandomElement(FIRE_COLOR);
   wizardFireball.style.backgroundColor = colorFireball;
   wizardFireballId.value = colorFireball;
-  wizardFireball.removeEventListener('click', onPopupEscPress);
 });
